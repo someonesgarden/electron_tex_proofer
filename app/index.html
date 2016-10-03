@@ -52,10 +52,10 @@
 
     <div class="menu container-flex clearfix">
         <span class="item item_center fix280 color1 border-right">
-            <span class="glyphicon glyphicon-menu-right"></span>..
+            <a href="#" id="digest">Markov Digest</a>
         </span>
         <span class="item item_center">
-              <a href="#" class="open-file">..</a>
+              <a href="#" id="furigana">Furigana</a>
         </span>
         <span class="item item_center">
               <a href="#" id="wordcount">Word Count</a>
@@ -81,7 +81,7 @@
                     <div v-text="message"></div>
                 </div>
 
-                <div id="proofed_list" v-show="showmode=='proof' || showmode=='wordcount'" width="100%" style="height:100%;"></div>
+                <div id="proofed_list" v-show="showmode=='proof' || showmode=='wordcount' || showmode=='furigana' || showmode=='digest'" width="100%" style="height:100%;"></div>
 
                 <table v-show="tokens.length && showmode=='tokenize'" width="100%" class="table">
                     <thead>
@@ -134,6 +134,8 @@
 <script src="js/window.js"></script>
 <script src="js/kousei_vue.js"></script>
 <script src="js/hindo2.js"></script>
+<script src="js/furigana.js"></script>
+<script src="js/markov.js"></script>
 <script src="tokenizer.js"></script>
 
 

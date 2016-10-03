@@ -4,6 +4,8 @@ var dl_button   = document.querySelector('a#export_csv');
 var proof_btn   = document.querySelector('a#proof');
 var proofed_list= document.querySelector('div#proofed_list');
 var wordcountbtn= document.querySelector('a#wordcount');
+var furigana_btn= document.querySelector('a#furigana');
+var digest_btn  = document.querySelector('a#digest');
 const BUTTON_CLASSNAME = ''
 //const BUTTON_CLASSNAME = 'btn btn-default'
 
@@ -87,18 +89,40 @@ wordcountbtn.onclick = function(){
     wordcounting();
 }
 
+furigana_btn.onclick = function(){
+    vm.showmode = "furigana";
+    furiganaaction();
+}
+
+digest_btn.onclick = function(){
+    vm.showmode = "digest";
+    digestaction();
+}
+
 function proofing(){
     proofed_list.innerHTML ="";
     console.log(vm.tokens,proofed_list);
     checkJosiNo(vm.tokens,proofed_list);
     checkTaiou(vm.tokens,proofed_list);
-
 }
 
 function wordcounting(){
     proofed_list.innerHTML ="";
     checkHindo2(vm.tokens,proofed_list);
 }
+
+function furiganaaction(){
+    proofed_list.innerHTML ="";
+    furigana(vm.tokens,proofed_list);
+}
+
+function digestaction(){
+    proofed_list.innerHTML ="";
+    var dic = makeDic(vm.tokens);
+    makeSentence(dic,proofed_list);
+}
+
+
 
 function build_csv() {
   var csv_string = "";
