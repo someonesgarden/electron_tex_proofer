@@ -15,7 +15,7 @@ function checkJosiNo(items,elem) {
 
     var it = items[i];
     var w = it.surface_form;
-      if (w == "EOS" || w == "CF" || w == "CRLF" || w=='\n' || w=='\r' || w=='\r\n') {
+      if ( w == "EOS" || w == "CF" || w == "CRLF" || w=='\n' || w=='\r' || w=='\r\n') {
         console.log("EOS:"+w);
         lineno++; cur = []; cnt = 0;
         continue;

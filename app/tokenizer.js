@@ -3,6 +3,7 @@ var tokenizer   = null;
 var dl_button   = document.querySelector('a#export_csv');
 var proof_btn   = document.querySelector('a#proof');
 var proofed_list= document.querySelector('div#proofed_list');
+var wordcountbtn= document.querySelector('a#wordcount');
 const BUTTON_CLASSNAME = ''
 //const BUTTON_CLASSNAME = 'btn btn-default'
 
@@ -26,7 +27,14 @@ var vm = new Vue({
             }
             try {
                 // lattice = tokenizer.getLattice(vm.inputText);
-                vm.tokens = tokenizer.tokenize(vm.inputText);
+                var txt = vm.inputText;
+                //txt = txt.replace( /[\r|\n]/g , "＠" ) ;
+                //var n = txt.match(/[\r|\n]/g);
+                //var len = 0;
+                //if (n) len = n.length + 1; else len = 1;
+                //console.log(len);
+                vm.tokens = tokenizer.tokenize(txt);
+                //console.log(vm.tokens);
             } catch (e) {
                 console.log(e);
                 // lattice = null;
@@ -74,10 +82,22 @@ proof_btn.onclick = function(){
     proofing();
 };
 
+wordcountbtn.onclick = function(){
+    vm.showmode = "wordcount";
+    wordcounting();
+}
+
 function proofing(){
     proofed_list.innerHTML ="";
+    console.log(vm.tokens,proofed_list);
     checkJosiNo(vm.tokens,proofed_list);
     checkTaiou(vm.tokens,proofed_list);
+
+}
+
+function wordcounting(){
+    proofed_list.innerHTML ="";
+    checkHindo2(vm.tokens,proofed_list);
 }
 
 function build_csv() {

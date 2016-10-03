@@ -81,7 +81,7 @@
                     <div v-text="message"></div>
                 </div>
 
-                <div id="proofed_list" v-show="showmode=='proof'" width="100%" style="height:100%;"></div>
+                <div id="proofed_list" v-show="showmode=='proof' || showmode=='wordcount'" width="100%" style="height:100%;"></div>
 
                 <table v-show="tokens.length && showmode=='tokenize'" width="100%" class="table">
                     <thead>
@@ -133,6 +133,7 @@
 <script src="js/common.js"></script>
 <script src="js/window.js"></script>
 <script src="js/kousei_vue.js"></script>
+<script src="js/hindo2.js"></script>
 <script src="tokenizer.js"></script>
 
 
